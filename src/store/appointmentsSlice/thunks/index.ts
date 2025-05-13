@@ -1,34 +1,42 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import type { Appointment } from '../../../types/scheduler';
+import { del, get, post } from '../../../utils/fetchUtils';
 
-const API_URL = 'http://localhost:3001/appointments';
 
 export const fetchAppointments = createAsyncThunk(
     'appointments/fetchAppointments',
-    async () => {
-        const response = await fetch(API_URL);
-        return (await response.json()) as Appointment[];
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await get("/appointments");
+            return response as Appointment[];
+        } catch (e) {
+            return rejectWithValue(e);
+        }
     }
 );
 
 export const addAppointment = createAsyncThunk(
     'appointments/addAppointment',
-    async (appointment: Omit<Appointment, 'id'>) => {
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(appointment),
-        });
-        return (await response.json()) as Appointment;
+    async (appointment: Omit<Appointment, 'id'>, { rejectWithValue }) => {
+        try {
+            const response = await post("/appointments", appointment);
+            return response as Appointment;
+        } catch (e) {
+            return rejectWithValue(e);
+        }
     }
 );
 
 export const deleteAppointment = createAsyncThunk(
     'appointments/deleteAppointment',
-    async (id: number) => {
-        await fetch(`${API_URL}/${id}`, {
-            method: 'DELETE',
-        });
-        return id;
+    async (id: number, { rejectWithValue }) => {
+        try {
+            await del(`/appointments/${id}`, {
+                method: 'DELETE',
+            });
+            return id;
+        } catch (e) {
+            return rejectWithValue(e);
+        }
     }
 );

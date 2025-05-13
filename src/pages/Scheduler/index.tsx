@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../store';
-import { useEffect, useState, type ChangeEvent } from 'react';
+import { useCallback, useEffect, useState, type ChangeEvent } from 'react';
 import { addAppointment, deleteAppointment, fetchAppointments } from '../../store/appointmentsSlice/thunks';
 import type { Appointment } from '../../types/scheduler';
 import { AppointmentCreation, Appoitment } from '../../components/Scheduler';
@@ -14,22 +14,22 @@ export default function Scheduler() {
         dispatch(fetchAppointments());
     }, [dispatch]);
 
-    function handleInput(e: ChangeEvent<HTMLInputElement>) {
-        setForm((prevState) => ({ 
-            ...prevState,
-            [e.target.name]: e.target.value
-        }))
-    }
+    const handleInput = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        setForm((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }));
+    }, []);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(addAppointment(form));
         setForm({ name: '', date: '', time: '', reason: '' });
-    };
+    }, [dispatch, form]);
 
-    const handleDelete = (id: number) => {
+    const handleDelete = useCallback((id: number) => {
         dispatch(deleteAppointment(id));
-    };
+    }, [dispatch]);
 
     return (
         <div className="p-4 max-w-2xl mx-auto">
@@ -37,7 +37,7 @@ export default function Scheduler() {
 
             <AppointmentCreation
                 handleInput={handleInput}
-                handleSubmit={handleSubmit} 
+                handleSubmit={handleSubmit}
                 form={form}
             />
 

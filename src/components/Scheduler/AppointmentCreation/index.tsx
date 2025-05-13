@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import type { Appointment } from '../../../types/scheduler';
 import { getDateAfterDays, getToday } from '../../../utils/dateUtils';
 
@@ -8,7 +8,7 @@ interface IDateSelector {
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
     form: Omit<Appointment, "id">
 }
-export const AppointmentCreation: React.FC<IDateSelector> = ({ handleSubmit, handleInput, form }) => {
+export const AppointmentCreation: React.FC<IDateSelector> = memo(({ handleSubmit, handleInput, form }) => {
     return (
         <form aria-label="appointment form" onSubmit={handleSubmit} className="space-y-2 mb-6">
             <input
@@ -50,4 +50,4 @@ export const AppointmentCreation: React.FC<IDateSelector> = ({ handleSubmit, han
             <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Add Appointment</button>
         </form>
     )
-}
+})

@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import { type FC, memo } from 'react'
 import type { Appointment } from '../../../types/scheduler'
 
 interface ITime {
@@ -6,7 +6,7 @@ interface ITime {
   item: Appointment,
 }
 
-export const Appoitment: FC<ITime> = ({ handleDelete, item }) => {
+export const Appoitment: FC<ITime> = memo(({ handleDelete, item }) => {
   function onDelete() {
     handleDelete(item.id)
   }
@@ -19,4 +19,4 @@ export const Appoitment: FC<ITime> = ({ handleDelete, item }) => {
         <button onClick={onDelete} className="text-red-600 hover:underline">Delete</button>
     </li>
   )
-}
+})
