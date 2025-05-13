@@ -39,14 +39,7 @@ This app is a simplified example of a real-world appointment scheduling system, 
 
 ---
 
-## 🚀 Getting Started
-
-### 1. Clone the Repo
-
-```bash
-git clone https://github.com/your-username/appointment-scheduler.git
-cd appointment-scheduler
-```
+## 📦 Project Structure
 
 ```bash
 src/
@@ -65,4 +58,30 @@ src/
 ├── App.tsx                  # App shell
 ├── main.tsx                 # Entry point
 └── index.css                # Tailwind styles
+```
+
+## 🚀 Getting Started
+
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/your-username/appointment-scheduler.git
+cd appointment-scheduler
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+### 3. Run the backend server
+
+```bash
+npm run dev
+```
+
+### 4. Run the frontend server in a different terminal tab
+
+```bash
+npm run api
 ```
