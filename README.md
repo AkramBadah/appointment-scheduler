@@ -106,4 +106,4 @@ npm run test:coverage
 
 ### 3. Writing Tests
 
-You can write tests for your React components using React Testing Library along with Vitest. Example tests can be found in the __tests__ folder (or wherever your test files are located).
+You can write tests for your React components using React Testing Library along with Vitest. Example tests can be found in the `__test__` folder (or wherever your test files are located).
