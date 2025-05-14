@@ -8,7 +8,7 @@ export interface Appointment {
 
 export interface AppointmentState {
     items: Appointment[];
-    status: '' | 'loading' | 'succeeded' | 'failed';
+    status: null | 'loading' | 'succeeded' | 'failed';
     error: string | null;
   }
   

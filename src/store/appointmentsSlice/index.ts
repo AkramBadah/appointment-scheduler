@@ -4,7 +4,7 @@ import type { Appointment, AppointmentState } from '../../types/scheduler';
 
 const initialState: AppointmentState = {
   items: [],
-  status: '',
+  status: null,
   error: null,
 };
 

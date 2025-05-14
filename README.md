@@ -10,7 +10,7 @@ This app is a simplified example of a real-world appointment scheduling system, 
 
 - ✅ Migration to **React** using component-based architecture
 - ✅ Use of **Redux Toolkit** with `createAsyncThunk` for async API flows
-- ✅ Styling via **Tailwind CSS** and configured using **PostCSS**
+- ✅ Styling via **Tailwind CSS** and configured using **@tailwindcss/vite**
 - ✅ Integration with **JSON Server** to simulate backend behavior
 - ✅ Clean, extensible type-safe code with **TypeScript**
 - ✅ Structure that supports scaling toward **Micro Frontends (MFE)**
@@ -85,3 +85,25 @@ npm run dev
 ```bash
 npm run api
 ```
+
+## 🧪 Testing
+
+### 1. Run tests
+
+```bash
+npm test
+```
+This will run all the tests in your project using Vitest.
+
+
+### 2. Run tests with coverage
+
+To run tests and generate a code coverage report:
+
+```bash
+npm run test:coverage
+```
+
+### 3. Writing Tests
+
+You can write tests for your React components using React Testing Library along with Vitest. Example tests can be found in the __tests__ folder (or wherever your test files are located).

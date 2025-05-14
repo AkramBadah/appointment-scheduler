@@ -9,10 +9,14 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/test/setup.ts',
+    coverage: {
+      provider: 'istanbul',
+      reporter: ['text', 'html'],
+      include: ['src/**/*.{ts,tsx}', 'components/**/*.{ts,tsx}'],
+    },
   },
   server: {
     watch: {
-      // Exclude db.json from being watched
       ignored: ['**/db.json']
     }
   }
